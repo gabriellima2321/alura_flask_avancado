@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Alura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .cadastro-box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .cadastro-box h2 {
+            margin-bottom: 20px;
+            color: #007bff; /* Cor do título */
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .cadastro-box input[type="text"],
+        .cadastro-box input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .cadastro-box input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease; /* Transição de cor */
+        }
+
+        .cadastro-box input[type="submit"]:hover {
+            background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+        }
+
+        .cadastro-box p {
+            text-align: center;
+            margin-top: 15px;
+            color: #555; /* Cor do texto do link */
+        }
+
+        .cadastro-box p a {
+            color: #007bff; /* Cor do link */
+            text-decoration: none;
+        }
+
+        .cadastro-box p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cadastro-box">
+            <h2>Cadastro</h2>
+            <form action="{{ url_for('cadastro_usuario') }}" method="post">
+                <input type="text" name="user" placeholder="Usuario" required>
+                <input type="text" name="nome" placeholder="Nome completo" required>
+                <input type="text" name="email" placeholder="E-mail" required>
+                <input type="password" name="senha" placeholder="Senha" required>
+                <input type="submit" value="Cadastrar">
+            </form>
+            <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça login</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
