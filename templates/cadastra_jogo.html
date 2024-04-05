@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Jogos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"],
+        .menu-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        input[type="submit"]:hover,
+        .menu-button:hover {
+            background-color: #0056b3;
+        }
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+        .menu-icon .line {
+            width: 30px;
+            height: 3px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: background-color 0.3s;
+        }
+        .menu-icon .line.middle {
+            width: 20px;
+        }
+        .menu-icon.open .line.top {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-icon.open .line.middle {
+            opacity: 0;
+        }
+        .menu-icon.open .line.bottom {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .menu {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .menu.open {
+            display: block;
+        }
+        .menu-item {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ titulo }}</h1>
+        <form action="/criar" method="post">
+            <label for="nome">Nome do Jogo:</label>
+            <input type="text" id="nomeJogo" name="nomeJogo" required>
+
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="">Selecione...</option>
+                <option value="Ação">Ação</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Estratégia">Estratégia</option>
+                <option value="RPG">RPG</option>
+                <!-- Adicione outras opções conforme necessário -->
+            </select>
+
+            <label for="plataforma">Plataforma:</label>
+            <input type="text" id="plataforma" name="plataforma" required>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div class="line top"></div>
+        <div class="line middle"></div>
+        <div class="line bottom"></div>
+    </div>
+
+    <div class="menu" id="menu">
+        <div class="menu-item">
+            <a href="{{url_for('index')}}">Lista de Jogos</a>
+        </div>
+        <div class="menu-item">
+            <a href="{{url_for('logout')}}">Sair</a>
+        </div>
+        <!-- Adicione outros itens de menu conforme necessário -->
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            var menuIcon = document.querySelector('.menu-icon');
+            menu.classList.toggle('open');
+            menuIcon.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
