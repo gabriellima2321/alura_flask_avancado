@@ -2,7 +2,7 @@ class DBInfo():
     def __init__(self):
         self._dbj = 'mysql'
         self._username = 'root'
-        self._password = 'rcvry'
+        self._password = 'root'
         self._host = 'localhost'
         self._schema = 'jogoteca'
 
